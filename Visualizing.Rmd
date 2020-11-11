@@ -1,0 +1,48 @@
+---
+title: "Data Visualization Project"
+author: "Nicole Doyle"
+date: "9/9/2020"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(readr)
+netflix_titles <- read_csv("Data sets/netflix_titles Data Set/netflix_titles.csv")
+View(netflix_titles)
+
+library(readr)
+StudentsPerformance <- read_csv("Data sets/StudentsPerformance Data Set/StudentsPerformance.csv")
+View(StudentsPerformance)
+```
+
+```{r}
+netflix_titles
+```
+
+```{r}
+StudentsPerformance
+```
+
+```{r}
+ggplot(data = StudentsPerformance) + geom_count (mapping = aes(x = reading.score, y = math.score, color = gender)) + labs(x = "Reading Score", y = "Math Score", title = "Math and Reading Scores of Students", subtitle = "Effects of Lunch on Student Performance: Trends by Sex", caption = "Source = Royce Simmions") + theme(axis.text.x = element_text(angle=90,hjust=1,vjust=0.5)) 
+
+```
+This visualization compares the test scores between males and females in both reading and writing. Using geom_count counts the overlapping points at certain places showing the densities of certain scores on the graph. This plot shows that within these students females have lower math stores as there is a higher density of larger points lower on the y-axis than males. This plot also shows that the females generally have a higher reading score as the density of female reading scores is more right on the x-axis than male reading scores. The plot also shows that both sexes tend to have correlating math and reading scores (75-75, 50,50), seen in the y = x trend the data seems to follow. 
+
+```{r}
+ggplot(data = netflix_titles, mapping = aes(x = type, fill  = rating)) + geom_bar(position = "dodge") + labs(x = "Media Type", y = "Count", title = "Ratings of Netflix Titles", subtitle = "Ratings of Movies and TV Shows", caption = "Source = Flixable") + theme(axis.text.x = element_text(angle=90,hjust=1,vjust=0.5))
+```
+
+This visualization shows the difference in ratings in Netflix movies and TV shows. The bar graph is split by the categorical values of the type of media, showing the different quantity of ratings in each. In both movies and TV shows there is the most number of TV_MA rating, followed by TV-14 rating both of which could reflect their main target audience of teens and young adults. They are also similar in that both have low numbers of TV-G. Also, while there are more movies total on Netflix, the TV show category has more TV-Y, TV-Y7, TV-Y7-FV, and UR titles than movies of those same ratings. 
+
+
+
+
+
+
+
